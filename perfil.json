@@ -1,0 +1,144 @@
+{
+  "name": "J. Ignacio Mestre",
+  "byline": "Jose I. Mestre",
+  "role": "Postdoctoral Researcher",
+  "tagline": "Researcher & developer · efficient deep learning",
+  "affiliation": "Universitat Politècnica de València",
+  "department": "Dept. of Computer Engineering (DISCA)",
+  "location": "Valencia, Spain",
+  "photo": "foto.jpg",
+
+  "links": {
+    "email": "jmiravet@uji.es",
+    "scholar": "https://scholar.google.com/citations?user=OBpnZikAAAAJ",
+    "orcid": "https://orcid.org/0000-0001-5954-4131",
+    "github": "https://github.com/jmiravet",
+    "linkedin": ""
+  },
+
+  "bio": [
+    "I'm a postdoctoral researcher at Universitat Politècnica de València, where I work on making AI systems efficient and sustainable to deploy. I like research that ships: when an idea works, I turn it into a library other people can install and use.",
+    "I received my Ph.D. in Computer Science from Universitat Jaume I in 2026 (cum laude, International Doctorate mention) with the thesis “Advances in Training and Inference Optimizations for Efficient Deep Neural Networks”, advised by Manuel F. Dolz and José Duato. During my Ph.D. I was part of the HPC&A group at UJI and a visiting researcher at the University of Glasgow."
+  ],
+
+  "interests": [
+    "Efficient AI",
+    "Weight initialization",
+    "Pruning & quantization",
+    "Training dynamics",
+    "Federated learning",
+    "HPC & GPUs"
+  ],
+
+  "software": [
+    {
+      "name": "AnyInit",
+      "repo": "jmiravet/AnyInit",
+      "description": "Initialize any deep neural network correctly with one call. AnyInit traces the model, detects the activation that follows each layer, and scales every weight so the signal neither vanishes nor explodes. Works with PyTorch, Keras 3 and Flax, and supports custom activations and arbitrary architectures.",
+      "install": "pip install anyinit",
+      "tags": ["Python", "PyTorch", "Keras", "JAX / Flax"],
+      "links": {
+        "code": "https://github.com/jmiravet/AnyInit",
+        "docs": "https://jmiravet.github.io/AnyInit/",
+        "pypi": "https://pypi.org/project/anyinit/"
+      },
+      "badge": "https://static.pepy.tech/personalized-badge/anyinit?period=total&units=INTERNATIONAL_SYSTEM&left_color=BLACK&right_color=GREEN&left_text=downloads"
+    },
+    {
+      "name": "Sinusoidal Initialization",
+      "repo": "jmiravet/Sinusoidal-Initialization",
+      "description": "Official PyTorch implementation of our NeurIPS 2025 paper. A deterministic initialization that builds structured weight matrices from sinusoids, improving convergence speed and final accuracy across CNNs, vision transformers and LLMs.",
+      "install": "",
+      "tags": ["PyTorch", "NeurIPS 2025"],
+      "links": {
+        "code": "https://github.com/jmiravet/Sinusoidal-Initialization",
+        "paper": "https://openreview.net/forum?id=FGliQVcrDZ"
+      },
+      "badge": ""
+    }
+  ],
+
+  "research": [
+    {
+      "title": "Compressing and accelerating neural networks",
+      "description": "Pruning, quantization, layer fusion and accuracy recovery to run deep models fast on GPUs, ARM/RISC-V CPUs and IoT devices."
+    },
+    {
+      "title": "Training dynamics",
+      "description": "Weight initialization, regularization and overfitting detection, and what structural and quantitative knowledge ReLU networks actually learn."
+    },
+    {
+      "title": "Distributed & federated learning",
+      "description": "Distributed training on GPU clusters and robust model aggregation in federated learning."
+    }
+  ],
+
+  "news": [
+    { "date": "2026", "text": "Two papers on federated learning accepted at FLICS 2026." },
+    { "date": "May 2026", "text": "Defended my Ph.D. at Universitat Jaume I: cum laude, with International Doctorate mention." },
+    { "date": "Dec 2025", "text": "Joined Universitat Politècnica de València as a postdoctoral researcher." },
+    { "date": "Dec 2025", "text": "Presented “Sinusoidal Initialization, Time for a New Start” at NeurIPS 2025 in San Diego." }
+  ],
+
+  "publications": [
+    {
+      "venue_short": "NeurIPS",
+      "title": "Sinusoidal Initialization, Time for a New Start",
+      "authors": "A. Fernández-Hernández, Jose I. Mestre, M. F. Dolz, J. Duato, E. S. Quintana-Ortí",
+      "venue": "Advances in Neural Information Processing Systems (NeurIPS)",
+      "year": "2025",
+      "links": {
+        "pdf": "https://proceedings.neurips.cc/paper_files/paper/2025/file/621dc667e65dce3ba19d882c7f2df1a7-Paper-Conference.pdf",
+        "openreview": "https://openreview.net/forum?id=FGliQVcrDZ",
+        "code": "https://github.com/jmiravet/Sinusoidal-Initialization"
+      }
+    },
+    {
+      "venue_short": "IP&M",
+      "title": "Anatomically Guided Gradient Masking for Chest X-ray Pathology Detection and Localization",
+      "authors": "Jose I. Mestre, N. Moreno-Chamorro, M. Castillo, J. I. Aliaga, M. F. Dolz",
+      "venue": "Information Processing & Management (in press)",
+      "year": "2026",
+      "links": {}
+    },
+    {
+      "venue_short": "EuroMLSys",
+      "title": "Decoupling Structural and Quantitative Knowledge in ReLU-based Deep Neural Networks",
+      "authors": "J. Duato, Jose I. Mestre, M. F. Dolz, E. S. Quintana-Ortí, J. Cano",
+      "venue": "5th Workshop on Machine Learning and Systems (EuroMLSys), ACM",
+      "year": "2025",
+      "links": { "doi": "https://doi.org/10.1145/3721146.3721950" }
+    },
+    {
+      "venue_short": "JoS",
+      "title": "Deep learning inference optimisation for IoT: Conv2D-ReLU-BN layer fusion and quantisation",
+      "authors": "Jose I. Mestre, S. Barrachina, D. Quezada, M. F. Dolz",
+      "venue": "The Journal of Supercomputing",
+      "year": "2025",
+      "links": { "doi": "https://doi.org/10.1007/s11227-025-07107-y" }
+    },
+    {
+      "venue_short": "IEEE IoT-J",
+      "title": "Latency-Critical Quantized Inference With Transformer Decoders on ARM and RISC-V CPUs",
+      "authors": "H. Martínez, S. Catalán, A. Castelló, Jose I. Mestre, E. S. Quintana-Ortí",
+      "venue": "IEEE Internet of Things Journal",
+      "year": "2025",
+      "links": { "doi": "https://doi.org/10.1109/JIOT.2025.3560382" }
+    },
+    {
+      "venue_short": "JoS",
+      "title": "PyDTNN: A User-Friendly and Extensible Framework for Distributed Deep Learning",
+      "authors": "A. Castelló, M. Catalán, M. F. Dolz, Jose I. Mestre, E. S. Quintana-Ortí",
+      "venue": "The Journal of Supercomputing",
+      "year": "2021",
+      "links": { "doi": "https://doi.org/10.1007/s11227-021-03673-z" }
+    }
+  ],
+
+  "timeline": [
+    { "period": "2026", "text": "Ph.D. in Computer Science · Universitat Jaume I" },
+    { "period": "2021", "text": "M.Sc. in High Performance Computing · Universidade da Coruña" },
+    { "period": "2021", "text": "B.Sc. in Computer Engineering · Universitat Jaume I" },
+    { "period": "2019", "text": "B.Sc. in Computational Mathematics · Universitat Jaume I (Outstanding Graduate Award)" }
+  ]
+}

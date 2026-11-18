@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>J. Ignacio Mestre</title>
+<meta name="description" content="Researcher and developer working on efficient deep learning: weight initialization, pruning, quantization and HPC.">
+<link rel="icon" href="foto.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #fbfaf8;
+    --text: #1d2025;
+    --muted: #616872;
+    --line: #e4e2dd;
+    --accent: #9a3b2e;
+    --accent-soft: #f4e9e6;
+    --chip: #efede8;
+    --code: #f1efea;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #141517; --text: #e7e6e3; --muted: #9a9ea6; --line: #2b2d31;
+      --accent: #e38f7f; --accent-soft: #2e2220; --chip: #232428; --code: #1d1e21;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #141517; --text: #e7e6e3; --muted: #9a9ea6; --line: #2b2d31;
+    --accent: #e38f7f; --accent-soft: #2e2220; --chip: #232428; --code: #1d1e21;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font: 16px/1.65 Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  h1, h2, h3 { font-family: "Source Serif 4", Georgia, serif; font-weight: 600; }
+  code { font-family: "JetBrains Mono", ui-monospace, Consolas, monospace; font-size: 0.85em; }
+
+  .layout {
+    max-width: 1080px; margin: 0 auto; padding: 64px 32px;
+    display: grid; grid-template-columns: 260px 1fr; gap: 64px;
+  }
+
+  /* ---- sidebar ---- */
+  aside { position: sticky; top: 48px; align-self: start; }
+  aside img.foto { width: 168px; height: 168px; border-radius: 50%; object-fit: cover; display: block; margin-bottom: 20px; }
+  aside h1 { margin: 0; font-size: 1.6rem; line-height: 1.2; }
+  .role { margin: 8px 0 0; font-weight: 500; }
+  .tagline { margin: 2px 0 0; color: var(--accent); font-size: 0.9rem; font-weight: 500; }
+  .affiliation { margin: 10px 0 0; color: var(--muted); font-size: 0.93rem; line-height: 1.45; }
+  .links { list-style: none; padding: 0; margin: 20px 0 0; font-size: 0.93rem; }
+  .links li { padding: 4px 0; display: flex; align-items: center; gap: 10px; }
+  .links svg { width: 18px; height: 18px; flex-shrink: 0; display: block; color: var(--text); }
+  .interests { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 20px; }
+  .chip { background: var(--chip); border-radius: 999px; padding: 2px 10px; font-size: 0.8rem; }
+
+  /* ---- main ---- */
+  main section { margin-bottom: 52px; }
+  h2 { font-size: 1.45rem; margin: 0 0 16px; padding-bottom: 6px; border-bottom: 1px solid var(--line); }
+  .bio p { margin: 0 0 12px; }
+
+  /* software */
+  .software { display: grid; gap: 16px; }
+  .repo { border: 1px solid var(--line); border-radius: 12px; padding: 18px 20px; }
+  .repo:first-child { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent-soft); }
+  .repo-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+  .repo h3 { margin: 0; font-size: 1.2rem; }
+  .stars { color: var(--muted); font-size: 0.85rem; white-space: nowrap; }
+  .repo p { margin: 6px 0 10px; font-size: 0.95rem; }
+  .install { display: inline-block; background: var(--code); border-radius: 6px; padding: 3px 10px; margin-bottom: 10px; }
+  .repo-foot { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; justify-content: space-between; }
+  .repo-foot .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .repo-foot img { height: 20px; display: block; }
+
+  .research { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .line { border: 1px solid var(--line); border-radius: 10px; padding: 16px; }
+  .line h3 { margin: 0 0 6px; font-size: 1.05rem; line-height: 1.3; }
+  .line p { margin: 0; font-size: 0.9rem; color: var(--muted); }
+
+  .news { list-style: none; margin: 0; padding: 0; }
+  .news li { display: grid; grid-template-columns: 88px 1fr; gap: 12px; padding: 6px 0; }
+  .date { color: var(--muted); font-size: 0.9rem; font-variant-numeric: tabular-nums; padding-top: 1px; }
+
+  .pub { display: grid; grid-template-columns: 96px 1fr; gap: 16px; padding: 14px 0; border-bottom: 1px dashed var(--line); }
+  .pub:last-of-type { border-bottom: 0; }
+  .badge {
+    align-self: start; text-align: center; font-size: 0.75rem; font-weight: 600;
+    background: var(--accent-soft); color: var(--accent); border-radius: 6px; padding: 4px 6px; line-height: 1.3;
+  }
+  .badge small { display: block; font-weight: 500; opacity: 0.8; }
+  .pub-title { font-weight: 600; line-height: 1.4; }
+  .pub-authors { font-size: 0.92rem; margin-top: 2px; }
+  .pub-authors b { font-weight: 600; text-decoration: underline; text-underline-offset: 2px; text-decoration-color: var(--accent); }
+  .pub-venue { font-size: 0.9rem; color: var(--muted); font-style: italic; }
+  .btns { margin-top: 4px; display: flex; flex-wrap: wrap; gap: 8px; }
+  .btns a { font-size: 0.78rem; border: 1px solid var(--line); border-radius: 4px; padding: 0 7px; }
+  .btns a:hover { border-color: var(--accent); text-decoration: none; }
+  .more { margin: 14px 0 0; font-size: 0.92rem; color: var(--muted); }
+
+  .project { padding: 6px 0; }
+  .project .meta { color: var(--muted); font-size: 0.88rem; }
+
+  .timeline { list-style: none; margin: 0; padding: 0; }
+  .timeline li { display: grid; grid-template-columns: 88px 1fr; gap: 12px; padding: 3px 0; font-size: 0.95rem; }
+  .service p { margin: 0 0 10px; font-size: 0.95rem; }
+
+  footer { margin-top: 56px; font-size: 0.8rem; color: var(--muted); }
+
+  #theme {
+    position: fixed; top: 14px; right: 14px; border: 1px solid var(--line); background: var(--bg); color: var(--text);
+    border-radius: 8px; padding: 4px 10px; font: inherit; font-size: 0.85rem; cursor: pointer;
+  }
+  .error { max-width: 600px; margin: 80px auto; padding: 0 16px; color: var(--muted); }
+
+  @media (max-width: 900px) { .research { grid-template-columns: 1fr; } }
+  @media (max-width: 760px) {
+    .layout { grid-template-columns: 1fr; gap: 40px; padding: 56px 16px 40px; }
+    aside { position: static; }
+    aside img.foto { width: 120px; height: 120px; }
+    .pub { grid-template-columns: 1fr; gap: 6px; }
+    .badge { justify-self: start; }
+    .badge small { display: inline; margin-left: 4px; }
+    .install { max-width: 100%; overflow-x: auto; }
+  }
+</style>
+</head>
+<body>
+<button id="theme" type="button" title="Toggle light/dark theme">◐</button>
+<div id="app" class="layout" aria-live="polite"></div>
+
+<script>
+function el(tag, attrs, ...children) {
+  const n = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs || {})) {
+    if (k === 'class') n.className = v; else n.setAttribute(k, v);
+  }
+  for (const c of children.flat()) {
+    if (c == null || c === '') continue;
+    n.append(c instanceof Node ? c : document.createTextNode(String(c)));
+  }
+  return n;
+}
+const has = (a) => Array.isArray(a) && a.length > 0;
+const link = (href, text) => el('a', { href, target: '_blank', rel: 'noopener' }, text);
+const section = (id, title, ...content) => el('section', { id }, el('h2', {}, title), ...content);
+const LABELS = { pdf: 'PDF', doi: 'DOI', code: 'Code', docs: 'Docs', pypi: 'PyPI', paper: 'Paper', openreview: 'OpenReview' };
+const buttons = (links) => {
+  const items = Object.entries(links || {}).filter(([, u]) => u);
+  return items.length ? el('div', { class: 'btns' }, items.map(([k, u]) => link(u, LABELS[k] || k))) : null;
+};
+
+// Inline SVG icons (static constants, safe to insert as HTML).
+const ICONS = {
+  // Brand logos: official monochrome paths from Simple Icons (CC0). Generic envelope for email.
+  email: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>',
+  github: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>',
+  orcid: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 0 1-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.025-5.325 5.025h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 4.022-2.484 4.022-3.722 0-2.016-1.284-3.722-4.097-3.722h-2.222z"/></svg>',
+  scholar: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/></svg>',
+  linkedin: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>',
+};
+function icon(name) {
+  const t = document.createElement('template');
+  t.innerHTML = ICONS[name];
+  return t.content.firstChild;
+}
+
+// Highlight my own name in an author list.
+function authors(text, byline) {
+  if (!byline || !text.includes(byline)) return text;
+  const parts = text.split(byline);
+  return parts.flatMap((p, i) => i < parts.length - 1 ? [p, el('b', {}, byline)] : [p]);
+}
+
+// Fetch live GitHub star counts; fail silently (e.g. rate limit).
+function loadStars(repo, node) {
+  fetch(`https://api.github.com/repos/${repo}`)
+    .then(r => r.ok ? r.json() : null)
+    .then(j => { if (j && typeof j.stargazers_count === 'number') node.textContent = `★ ${j.stargazers_count}`; })
+    .catch(() => {});
+}
+
+function render(d) {
+  const app = document.getElementById('app');
+  const L = d.links || {};
+
+  // ---- sidebar ----
+  const contact = [
+    L.email && ['email', el('a', { href: 'mailto:' + L.email }, L.email)],
+    L.github && ['github', link(L.github, 'GitHub')],
+    L.scholar && ['scholar', link(L.scholar, 'Google Scholar')],
+    L.orcid && ['orcid', link(L.orcid, 'ORCID')],
+    L.linkedin && ['linkedin', link(L.linkedin, 'LinkedIn')],
+  ].filter(Boolean);
+
+  app.append(el('aside', {},
+    d.photo ? el('img', { class: 'foto', src: d.photo, alt: d.name }) : null,
+    el('h1', {}, d.name),
+    d.role ? el('p', { class: 'role' }, d.role) : null,
+    d.tagline ? el('p', { class: 'tagline' }, d.tagline) : null,
+    el('p', { class: 'affiliation' },
+      d.affiliation, d.department ? el('br') : null, d.department,
+      d.location ? el('br') : null, d.location),
+    el('ul', { class: 'links' }, contact.map(([ico, a]) => el('li', {}, icon(ico), a))),
+    has(d.interests) ? el('div', { class: 'interests' }, d.interests.map(t => el('span', { class: 'chip' }, t))) : null,
+  ));
+
+  // ---- main ----
+  const main = el('main');
+
+  if (has(d.bio)) main.append(section('about', 'About', el('div', { class: 'bio' }, d.bio.map(p => el('p', {}, p)))));
+
+  if (has(d.software)) main.append(section('software', 'Featured software',
+    el('div', { class: 'software' }, d.software.map(s => {
+      const stars = el('span', { class: 'stars' });
+      if (s.repo) loadStars(s.repo, stars);
+      const main = (s.links || {}).code;
+      return el('div', { class: 'repo' },
+        el('div', { class: 'repo-head' }, el('h3', {}, main ? link(main, s.name) : s.name), stars),
+        el('p', {}, s.description),
+        s.install ? el('code', { class: 'install' }, '$ ' + s.install) : null,
+        el('div', { class: 'repo-foot' },
+          has(s.tags) ? el('div', { class: 'tags' }, s.tags.map(t => el('span', { class: 'chip' }, t))) : el('span'),
+          s.badge ? el('img', { src: s.badge, alt: 'downloads', loading: 'lazy' }) : null),
+        buttons(s.links));
+    }))));
+
+  if (has(d.research)) main.append(section('research', 'Research',
+    el('div', { class: 'research' }, d.research.map(r => el('div', { class: 'line' }, el('h3', {}, r.title), el('p', {}, r.description))))));
+
+  if (has(d.news)) main.append(section('news', 'News',
+    el('ul', { class: 'news' }, d.news.map(n => el('li', {}, el('span', { class: 'date' }, n.date), el('span', {}, n.text))))));
+
+  if (has(d.publications)) {
+    const full = L.scholar || L.orcid;
+    main.append(section('publications', 'Selected publications',
+      d.publications.map(p => {
+        const lk = p.links || {};
+        const primary = lk.doi || lk.pdf || lk.openreview;
+        return el('div', { class: 'pub' },
+          el('div', { class: 'badge' }, p.venue_short, el('small', {}, p.year)),
+          el('div', {},
+            el('div', { class: 'pub-title' }, primary ? link(primary, p.title) : p.title),
+            el('div', { class: 'pub-authors' }, authors(p.authors || '', d.byline)),
+            el('div', { class: 'pub-venue' }, p.venue, p.year ? `, ${p.year}` : ''),
+            buttons(lk)));
+      }),
+      full ? el('p', { class: 'more' }, 'Full list on ', link(full, L.scholar ? 'Google Scholar' : 'ORCID'), '.') : null));
+  }
+
+  if (has(d.timeline)) main.append(section('education', 'Education',
+    el('ul', { class: 'timeline' }, d.timeline.map(t => el('li', {}, el('span', { class: 'date' }, t.period), el('span', {}, t.text))))));
+
+  main.append(el('footer', {}, '© ', String(new Date().getFullYear()), ' ', d.name));
+  app.append(main);
+  document.title = d.name;
+}
+
+// ---- light / dark theme ----
+(function () {
+  const r = document.documentElement;
+  try { const t = localStorage.getItem('theme'); if (t) r.dataset.theme = t; } catch (e) {}
+  document.getElementById('theme').addEventListener('click', () => {
+    const dark = r.dataset.theme ? r.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+    r.dataset.theme = dark ? 'light' : 'dark';
+    try { localStorage.setItem('theme', r.dataset.theme); } catch (e) {}
+  });
+})();
+
+fetch('perfil.json', { cache: 'no-cache' })
+  .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
+  .then(render)
+  .catch(err => {
+    document.getElementById('app').replaceWith(el('div', { class: 'error' },
+      'Could not load perfil.json (', String(err.message || err), '). ',
+      'Browsers block this when opening the file from disk: run "py -m http.server" in this folder and open http://localhost:8000'));
+  });
+</script>
+</body>
+</html>
